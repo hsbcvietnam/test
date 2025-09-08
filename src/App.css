@@ -59,3 +59,36 @@ body {
 .toastui-calendar-timegrid-time:nth-child(1), .toastui-calendar-timegrid-time:nth-child(2) {
   display: none;
 }
+
+.toastui-calendar-milestone,
+.toastui-calendar-task,
+.toastui-calendar-allday,
+.toastui-calendar-week-view > :nth-child(3),
+.toastui-calendar-week-view > :nth-child(5),
+.toastui-calendar-week-view > :nth-child(7) {
+  display: none;
+}
+
+.toastui-calendar-template-time {
+  text-wrap: wrap;
+}
+
+.toastui-calendar-template-time strong {
+  display: none;
+}
+
+.toastui-calendar-template-time span {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #FFFFFF;
+}
+
+.toastui-calendar-popup-section.toastui-calendar-section-detail {
+  display: none;
+}
+
+.toastui-calendar-form-container > :nth-child(1),
+.toastui-calendar-form-container > :nth-child(3),
+.toastui-calendar-form-container > :nth-child(5) {
+  display: none;
+}

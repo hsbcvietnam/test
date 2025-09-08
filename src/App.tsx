@@ -32,20 +32,21 @@ export function App({ view }: { view: ViewType }) {
   const calendarRef = useRef<typeof Calendar>(null);
   const [selectedDateRangeText, setSelectedDateRangeText] = useState('');
   const [selectedView, setSelectedView] = useState(view);
+  const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
   const initialCalendars: Options['calendars'] = [
     {
       id: '0',
-      name: 'Private',
-      backgroundColor: '#9e5fff',
-      borderColor: '#9e5fff',
-      dragBackgroundColor: '#9e5fff',
-    },
-    {
-      id: '1',
       name: 'Company',
-      backgroundColor: '#00a9ff',
-      borderColor: '#00a9ff',
-      dragBackgroundColor: '#00a9ff',
+      backgroundColor: getRandomColor(),
+      borderColor: '#9e5fff',
+      dragBackgroundColor: getRandomColor(),
     },
   ];
   const initialEvents: Partial<EventObject>[] = [
@@ -56,32 +57,18 @@ export function App({ view }: { view: ViewType }) {
       category: 'time',
       start: today,
       end: addHours(today, 3),
+      backgroundColor: getRandomColor(),
+      dragBackgroundColor: getRandomColor(),
     },
     {
       id: '2',
-      calendarId: '0',
-      title: 'Practice',
-      category: 'milestone',
-      start: addDate(today, 1),
-      end: addDate(today, 1),
-      isReadOnly: true,
-    },
-    {
-      id: '3',
-      calendarId: '0',
-      title: 'FE Workshop',
-      category: 'allday',
-      start: subtractDate(today, 2),
-      end: subtractDate(today, 1),
-      isReadOnly: true,
-    },
-    {
-      id: '4',
       calendarId: '0',
       title: 'Report',
       category: 'time',
       start: today,
       end: addHours(today, 1),
+      backgroundColor: getRandomColor(),
+      dragBackgroundColor: getRandomColor(),
     },
   ];
 
@@ -220,6 +207,8 @@ export function App({ view }: { view: ViewType }) {
       location: eventData.location,
       state: eventData.state,
       isPrivate: eventData.isPrivate,
+      backgroundColor: getRandomColor(),
+      dragBackgroundColor: getRandomColor(),
     };
 
     getCalInstance().createEvents([event]);
@@ -265,7 +254,7 @@ export function App({ view }: { view: ViewType }) {
         <span className="render-range">{selectedDateRangeText}</span>
       </div>
       <Calendar
-        height="900px"
+        height="700px"
         calendars={initialCalendars}
         month={{ startDayOfWeek: 1 }}
         events={initialEvents}
